@@ -9,4 +9,16 @@ class TaskController < ApplicationController
     @tasks = Task.find(params[:id])
   end
 
+  def new
+    @tasks = Task.new(task_params)
+    @tasks.save
+  end
+
+
+
+  private
+  def task_params
+      params.permit(:title, :descripton, :date)
+  end
+
 end
